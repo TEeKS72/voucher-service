@@ -52,4 +52,13 @@ class VoucherServiceTest {
         assertEquals("FAILED", third.getResult());
         assertEquals("User has reached redemption limit for this campaign", third.getMessage());
     }
+
+    @Test
+    void redeemSucceedsOnDifferentCampaignAfterReachingLimitOnFirstCampaign() {
+        RedeemResponse blocked = voucherService.redeem("RAYA-0002", "user-99");
+        assertEquals("FAILED", blocked.getResult());
+        assertEquals("User has reached redemption limit for this campaign", blocked.getMessage());
+        RedeemResponse allowed = voucherService.redeem("MRDK-0001", "user-99");
+        assertEquals("OK", allowed.getResult());
+    }
 }
