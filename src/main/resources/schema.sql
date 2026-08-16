@@ -3,12 +3,13 @@ DROP TABLE IF EXISTS voucher;
 DROP TABLE IF EXISTS campaign;
 
 CREATE TABLE campaign (
-    id              BIGINT PRIMARY KEY,
-    name            VARCHAR(200) NOT NULL,
-    client_code     VARCHAR(50)  NOT NULL,
-    total_stock     INT          NOT NULL,
-    remaining_stock INT          NOT NULL,
-    active          BOOLEAN      NOT NULL DEFAULT TRUE
+    id                             BIGINT PRIMARY KEY,
+    name                           VARCHAR(200) NOT NULL,
+    client_code                    VARCHAR(50)  NOT NULL,
+    total_stock                    INT          NOT NULL,
+    remaining_stock                INT          NOT NULL,
+    active                         BOOLEAN      NOT NULL DEFAULT TRUE,
+    redemption_limit_per_user      INT          NOT NULL DEFAULT 2
 );
 
 CREATE TABLE voucher (
