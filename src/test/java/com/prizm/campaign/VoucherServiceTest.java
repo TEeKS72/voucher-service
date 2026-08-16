@@ -31,4 +31,25 @@ class VoucherServiceTest {
         RedeemResponse res = voucherService.redeem("NOPE-9999", "user-3");
         assertEquals("FAILED", res.getResult());
     }
+
+    @Test
+    void redeemFailsWhenUserReachesCampaignLimit() {
+        RedeemResponse res = voucherService.redeem("RAYA-0002", "user-99");
+
+        assertEquals("FAILED", res.getResult());
+        assertEquals("User has reached redemption limit for this campaign", res.getMessage());
+    }
+
+    @Test
+    void redeemSucceedsWhenUserIsUnderCampaignLimitThenFailsOnNextAttempt() {
+        RedeemResponse first = voucherService.redeem("RAYA-0003", "user-55");
+        assertEquals("OK", first.getResult());
+
+        RedeemResponse second = voucherService.redeem("RAYA-0006", "user-55");
+        assertEquals("OK", second.getResult());
+
+        RedeemResponse third = voucherService.redeem("RAYA-0002", "user-55");
+        assertEquals("FAILED", third.getResult());
+        assertEquals("User has reached redemption limit for this campaign", third.getMessage());
+    }
 }
