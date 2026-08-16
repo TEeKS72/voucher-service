@@ -22,16 +22,62 @@ public class Campaign {
 
     private boolean active;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getClientCode() { return clientCode; }
-    public void setClientCode(String clientCode) { this.clientCode = clientCode; }
-    public int getTotalStock() { return totalStock; }
-    public void setTotalStock(int totalStock) { this.totalStock = totalStock; }
-    public int getRemainingStock() { return remainingStock; }
-    public void setRemainingStock(int remainingStock) { this.remainingStock = remainingStock; }
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
+    @Column(name = "redemption_limit_per_user")
+    private int redemptionLimitPerUser;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getClientCode() {
+        return clientCode;
+    }
+
+    public void setClientCode(String clientCode) {
+        this.clientCode = clientCode;
+    }
+
+    public int getTotalStock() {
+        return totalStock;
+    }
+
+    public void setTotalStock(int totalStock) {
+        this.totalStock = totalStock;
+    }
+
+    public int getRemainingStock() {
+        return remainingStock;
+    }
+
+    public void setRemainingStock(int remainingStock) {
+        this.remainingStock = remainingStock;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public int getRedemptionLimitPerUser() {
+        return redemptionLimitPerUser;
+    }
+
+    public void setRedemptionLimitPerUser(int redemptionLimitPerUser) {
+        this.redemptionLimitPerUser = redemptionLimitPerUser;
+    }
 }
